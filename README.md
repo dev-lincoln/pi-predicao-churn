@@ -1,10 +1,5 @@
-# Deploy de modelos com Flask
+# Projeto Integrador - Predição de Churn
 
-Este é o repositório do código do vídeo **Deploy de modelos com Flask** do Youtube do canal Let's Data.
+Projeto Integrador de predição de churn com Machine Learning para o curso Data Analytics - Digital House
 
-Link para o vídeo: https://youtu.be/_KNzvVsrB8k
 
-Ao final deste vídeo você será capaz de:  
-☑️ A importância de tirar os modelos do papel  
-☑️ Criar um modelo no scikit learn  
-☑️ Integrar modelo preditivo numa aplicação Flask
