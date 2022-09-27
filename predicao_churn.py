@@ -1,12 +1,13 @@
 import pickle
 
 import pandas as pd
+import numpy as np
 from flask import Flask, render_template, request
 
-# molezinha, só tem que setar as pastas de template e assets
+# Setar as pastas de template e assets
 app = Flask(__name__, template_folder='template', static_folder='template/assets')
 
-# Treina lá, usa cá
+# Importando o modelo
 modelo_pipeline = pickle.load(open('models/pipe.pkl', 'rb'))
 
 
@@ -31,7 +32,6 @@ def get_data():
     HasCrCard = request.form.get('HasCrCard')
     IsActiveMember = request.form.get('IsActiveMember')
     EstimatedSalary = request.form.get('EstimatedSalary')
-   
 
     d_dict = {'CreditScore': [CreditScore], 'Geography': [Geography], 'Gender': [Gender],
               'Age': [Age], 'Tenure': [Tenure], 'Balance': [Balance],
@@ -44,21 +44,24 @@ def get_data():
 @app.route('/send', methods=['POST'])
 def show_data():
     df = get_data()
-    df = df[['Geography', 'Gender', 'CreditScore', 'Age', 'Tenure',
-       'Balance', 'NumOfProducts', 'EstimatedSalary', 'HasCrCard',
-       'IsActiveMember']]
+    df = df[['CreditScore', 'Geography', 'Gender', 'Age', 'Tenure',
+             'Balance', 'NumOfProducts', 'HasCrCard', 'EstimatedSalary', 'IsActiveMember',
+             ]]
 
     prediction = modelo_pipeline.predict(df)
-    outcome = 'ESSE CLIENTE VAI EMBORA'
-    outcome2 = 'ESSE CLIENTE VAI EMBORA'
-    imagem = 'chefe_brabo.jpg'
+    proba = np.ravel(modelo_pipeline.predict_proba(df))
+    prob = str(round(proba[1]*100, 2))
+    outcome = 'Esse cliente vai embora!'
+    outcome2 = "Probabilidade de Churn: " + prob + "%"
+    imagem = 'sad.jpg'
     if prediction == 0:
-        outcome = 'Ufa... esse cliente vai ficar!'
-        outcome2 = 'Ufa... esse cliente vai ficar!'
-        imagem = 'chefe_feliz.jpg'
+        prob = str(round(proba[0]*100, 2))
+        outcome = 'Esse cliente vai ficar!'
+        outcome2 = "Probabilidade de Retenção: " + prob + "%"
+        imagem = 'happy.jpg'
 
     return render_template('result.html', tables=[df.to_html(classes='data', header=True, col_space=10)],
-                           result=outcome, imagem=imagem, gitproba=proba)
+                           result=outcome, imagem=imagem, result2=outcome2)
 
 
 if __name__ == "__main__":
