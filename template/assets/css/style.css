@@ -8,9 +8,16 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+}
+
+body u {
+  font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
 a {

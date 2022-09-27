@@ -1,0 +1,1 @@
+web: gunicorn predicao_churn:app
