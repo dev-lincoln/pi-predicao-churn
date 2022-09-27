@@ -173,7 +173,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 20px;
   margin-left: 30px;
   border-radius: 4px;
-  color: #fff;
+  color: #FFC727;
 }
 .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
   color: #fff;
@@ -486,7 +486,7 @@ section {
 }
 
 .section-bg {
-  background-color: #f6f9fd;
+  background-color: #181E4A;
 }
 
 .section-title {
@@ -518,7 +518,7 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #0f2f57;
+  color: #FFC727;
 }
 
 /*--------------------------------------------------------------
