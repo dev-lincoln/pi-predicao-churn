@@ -2,7 +2,7 @@
 
 Projeto Integrador de predição de churn bancário com Machine Learning para o curso Data Analytics - Digital House.
 
-Modelo de predição: XGBoost.<br>
+Modelo de predição XGBoost: https://xgboost.readthedocs.io/en/stable/<br>
 Dataset: https://www.kaggle.com/datasets/santoshd3/bank-customers<br>
 Deploy no Heroku: https://predicaochurn.herokuapp.com/<br>
 
